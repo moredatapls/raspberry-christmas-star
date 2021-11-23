@@ -6,18 +6,26 @@ import random
 gpioPin = board.D12 # has to be PWM compatible
 numPixels = 11
 
-sleepDurationSecs = 0.2
+sleepDurationSecs = 0.1
 
-pixels = neopixel.NeoPixel(gpioPin, numPixels, brightness=0.5)
+pixels = neopixel.NeoPixel(gpioPin, numPixels, brightness=1.0)
 
 pixels.fill((0, 0, 0))
 
 pLast = 0
 
-while True:
-	for p in range(numPixels):
-		color = (random.randrange(0, 255), random.randrange(0, 255), random.randrange(0, 255))
+def allRandom():
+	color = (random.randrange(0, 255), random.randrange(0, 255), random.randrange(0, 255))
+	return color
 
+def shadesOfGreen():
+	color = (random.randrange(0, 127), 255, random.randrange(0, 127))
+	return color
+
+while True:
+	color = shadesOfGreen() #allRandom()
+
+	for p in range(numPixels):
 		pixels[p] = color
 
 		pixels.show()
