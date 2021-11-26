@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 flask = "*"
 flask-restful = "*"
+board = "*"
+adafruit-circuitpython-neopixel = "*"
 
 [dev-packages]
 
