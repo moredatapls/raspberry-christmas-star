@@ -8,6 +8,7 @@ flask = "*"
 flask-restful = "*"
 board = "*"
 adafruit-circuitpython-neopixel = "*"
+"rpi.gpio" = "*"
 
 [dev-packages]
 
