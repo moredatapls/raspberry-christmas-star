@@ -13,6 +13,6 @@ run locally:
 1. `pip3 install --user pipenv`
 2. add dir to PATH if necessary
 3. change to the project root dir
-4. run `pipenv install`
-5. `pipenv run python main.py`
+4. run `CFLAGS="-fcommon" pipenv install` [1](https://forum.manjaro.org/t/pip-install-rpi-gpio-fail/25788/4)
+5. run with sudo (gpio requires that): `sudo -E env PATH=$PATH pipenv run python main.py`
 
