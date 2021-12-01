@@ -11,17 +11,13 @@ from star.Star import Star
 
 app = Flask(__name__, template_folder='static')
 api = Api(app)
-port = 8080
 
-if sys.argv.__len__() > 1:
-    port = sys.argv[1]
-
-print("API running on port : {}".format(port))
-
-if app.env == "PRODUCTION":
+if app.env == "production":
     container = Container(Star())
-elif app.env == "DEVELOPMENT":
+    port = 80
+elif app.env == "development":
     container = Container(MockStar())
+    port = 8080
 else:
     raise ValueError("Unsupported environment: " + str(app.env))
 
