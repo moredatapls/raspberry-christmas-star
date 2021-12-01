@@ -2,11 +2,25 @@
 <html lang="en">
     <head>
         <title>Raspberry Pi Star</title>
+        <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
     </head>
     <body>
-        <form action="/single-color" method="post">
-            <input type="color" id="color-picker" name="color" />
-            <input type="submit" value="Submit">
-        </form>
+        <div id="picker"></div>
+
+        <script type="text/javascript">
+            var colorPicker = new iro.ColorPicker('#picker');
+
+            const updateColor = async(color) => {
+                let formData = new FormData()
+                formData.append('color', color.hexString)
+
+                const response = await fetch('/single-color', {
+                    method: 'POST',
+                    body: formData
+                })
+            }
+
+            colorPicker.on('color:change', updateColor)
+        </script>
     </body>
 </html>
