@@ -5,18 +5,29 @@
         <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
     </head>
     <body>
-        <div id="picker"></div>
+        <div id="background" style="height:100%; width=100%; left: 0; right: 0; top: 0; bottom: 0; overflow: auto; position: fixed;">
+            <div id="content" style="background-color: #000000; left: 20pt; right: 20pt; top: 20pt; bottom: 20pt; overflow: hidden; position: absolute; border-radius: 20pt;">
+                <!-- https://github.com/jaames/iro.js -->
+                <div id="picker" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+            </div>
+        </div>
 
         <script type="text/javascript">
-            var colorPicker = new iro.ColorPicker('#picker');
+            var colorPicker = new iro.ColorPicker('#picker', {
+                borderWidth: 3,
+                borderColor: '#ffffff'
+            })
+            var background = document.getElementById('background');
 
             const updateColor = async(color) => {
                 let formData = new FormData()
                 formData.append('color', color.hexString)
 
-                const response = await fetch('/single-color', {
+                fetch('/single-color', {
                     method: 'POST',
                     body: formData
+                }).then(function(response) {
+                    background.style.backgroundColor = color.hexString
                 })
             }
 
