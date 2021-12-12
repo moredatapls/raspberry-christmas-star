@@ -1,10 +1,29 @@
-# Setup
+<p align="center">
+   <img src="https://raw.githubusercontent.com/moredatapls/raspberry-christmas-star/master/img/star.jpg" />
+   <img src="https://raw.githubusercontent.com/moredatapls/raspberry-christmas-star/master/img/controls.png" />
+</p>
 
-This is a little project I built for Christmas: a remote-controlled LED-illuminated star. 
+This is a little project I built for Christmas: a remote-controlled LED-illuminated star that I can hang on my window.
+The star is controlled by a Raspberry Pi Zero. It is illuminated by a Neopixel LED strip.
+
+To control the star from any service in your network, the Raspberry Pi runs a little Python-based webserver (Flask).
+It serves a static website with a color wheel ([Iro.js](https://iro.js.org/)). By moving the color wheel you can
+change the color of the star.
+
+## Parts
+
+* Raspberry Pi Zero
+* Neopixel LED Strip
+* 5V power supply
+
+TODO complete the parts list...
 
 ## Wiring
 
-The wiring is pretty easy. TODO add the diagrams...
+The wiring is pretty easy. Instead of powering the Raspberry Pi through MicroUSB, I am powering it through the GPIO pins, which makes the wiring
+a bit easier.
+
+TODO complete the diagrams...
 
 ## Setup the Raspberry Pi
 
