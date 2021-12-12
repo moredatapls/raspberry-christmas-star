@@ -1,7 +1,8 @@
-<p align="center">
-   <img src="https://raw.githubusercontent.com/moredatapls/raspberry-christmas-star/master/img/star.jpg" />
-   <img src="https://raw.githubusercontent.com/moredatapls/raspberry-christmas-star/master/img/controls.png" />
-</p>
+<h1 align="center">
+   <img style="width: 70%" src="https://raw.githubusercontent.com/moredatapls/raspberry-christmas-star/master/img/banner.jpg" />
+   
+   Raspberry Pi Christmas Star
+</h1>
 
 This is a little project I built for Christmas: a remote-controlled LED-illuminated star that I can hang on my window.
 The star is controlled by a Raspberry Pi Zero. It is illuminated by a Neopixel LED strip.
