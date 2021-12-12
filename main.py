@@ -25,4 +25,7 @@ api.add_resource(SingleColor, '/single-color', resource_class_kwargs={'container
 api.add_resource(Index, '/')
 
 if __name__ == '__main__':
+    # set some color on startup
+    container.get_star().set_color(255, 162, 0)
+
     app.run("0.0.0.0", port, debug=True)

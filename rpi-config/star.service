@@ -7,7 +7,7 @@ User=pi
 Type=simple
 Restart=always
 ExecStart=sudo -E env PATH=$PATH /home/pi/.local/bin/pipenv run python main.py
-WorkingDirectory=<directory where you cloned the repo>
+WorkingDirectory=<TODO>
 
 [Install]
 WantedBy=multi-user.target
