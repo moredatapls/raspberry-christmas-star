@@ -1,5 +1,3 @@
-import sys
-
 from flask import Flask
 from flask_restful import Api
 
@@ -26,6 +24,6 @@ api.add_resource(Index, '/')
 
 if __name__ == '__main__':
     # set some color on startup
-    container.get_star().set_color(255, 162, 0)
+    container.get_star().set_color(117, 54, 255)
 
     app.run("0.0.0.0", port, debug=True)
