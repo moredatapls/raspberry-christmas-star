@@ -1,0 +1,13 @@
+[Unit]
+Description=Raspberry Pi Christmas Star
+After=multi-user.target
+
+[Service]
+User=pi
+Type=simple
+Restart=always
+ExecStart=sudo -E env PATH=$PATH /home/pi/.local/bin/pipenv run python main.py
+WorkingDirectory=<directory where you cloned the repo>
+
+[Install]
+WantedBy=multi-user.target
