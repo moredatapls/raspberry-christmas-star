@@ -7,8 +7,11 @@
     <body>
         <div id="background" style="height:100%; width=100%; left: 0; right: 0; top: 0; bottom: 0; overflow: auto; position: fixed;">
             <div id="content" style="background-color: #EEEEEE; left: 20pt; right: 20pt; top: 20pt; bottom: 20pt; overflow: hidden; position: absolute; border-radius: 20pt;">
-                <!-- https://github.com/jaames/iro.js -->
-                <div id="picker" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                    <!-- https://github.com/jaames/iro.js -->
+                    <div id="picker"></div>
+                    <input type="text" id="hex" style="font-family: Arial; font-weight: normal; text-align: center; font-size: x-large; width: 100%; margin-top: 10pt;" />
+                </div>
             </div>
         </div>
 
@@ -17,21 +20,51 @@
                 borderWidth: 3,
                 borderColor: '#ffffff'
             })
+
             var background = document.getElementById('background');
+            var hexInput = document.getElementById('hex');
 
             const updateColor = async(color) => {
                 let formData = new FormData()
-                formData.append('color', color.hexString)
+                formData.append('color', color)
 
                 fetch('/single-color', {
                     method: 'POST',
                     body: formData
                 }).then(function(response) {
-                    background.style.backgroundColor = color.hexString
+                    background.style.backgroundColor = color
                 })
             }
 
-            colorPicker.on('color:change', updateColor)
+            // actions of the color picker
+            const onColorChanged = async(color) => {
+                await updateColor(color.hexString)
+                hexInput.value = color.hexString
+            }
+
+            colorPicker.on('color:change', onColorChanged)
+
+            // actions of the input field
+            const onTextChanged = async(event) => {
+                var currentValue = hexInput.value
+
+                console.log("changed = " + currentValue)
+
+                // correct the text if needed
+                if(!hexInput.value.startsWith('#')) {
+                    currentValue = '#' + currentValue
+
+                    hexInput.value = currentValue
+                }
+
+                if(currentValue.match(/#[0-9a-f]{6}/i)) {
+                    console.log("match = " + currentValue)
+                    await updateColor(currentValue)
+                    colorPicker.color.hexString = currentValue
+                }
+            }
+
+            hexInput.addEventListener('input', onTextChanged)
         </script>
     </body>
 </html>
